@@ -1,0 +1,210 @@
+@import url(https://fonts.googleapis.com/css?family=Asap:400,400i,500,500i,600,600i,700,700i&display=swap);
+
+body {
+  font-family: Roboto, sans-serif;
+  background: #f3f3f3;
+}
+
+.wrapper {
+  max-width: 1200px;
+}
+
+/* Actie pagina only */
+.banner__image.-blue{
+  min-height: 100px !important
+}
+/* Actie pagina only */
+.mediaRow {
+  width: 100%;
+    margin-top: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  margin-left: auto;
+  margin-right: auto;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: url(https://i.imgur.com/0cdsmoi.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.mediaBanner {
+  width: 100%;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  color: black;
+justify-content: center;;
+
+}
+
+.mediaBanner__contentContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+
+}
+
+.mediaBanner__contentContainer section {
+  padding: 25px 60px;
+      border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 50%);
+    display: flex;
+    flex-direction: column;
+}
+.mediaBanner .--dub_banner {
+  width: 40%;
+  padding: 20px 70px;
+  flex-grow: unset;
+  align-items: center;
+}
+
+.mediaBanner__title {
+  font-family: Asap, sans-serif;
+  font-style: italic;
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.mediaBanner__cta {
+  margin: 5px;
+  padding: 12px 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #0587c7;
+  border-radius: 22px;
+  background-color: #0587c7;
+  color: #fff;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: center;
+
+
+
+}
+
+.--flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+
+.--full-width {
+  width: 100%;
+}
+
+
+.mediaBanner__imgContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 32%;
+
+}
+
+.mediaBanner__imgContainer img {
+  width: auto;
+}
+
+h2,
+.h2-like {
+  font-size: 23px;
+  line-height: 28px;
+}
+
+@media screen and (min-width: 768px) {
+
+  h2,
+  .--h2-like {
+    font-size: 32px;
+    line-height: 37px;
+  }
+
+}
+
+.--blue {
+  color: #0587C7;
+}
+
+
+@media (min-width: 200px) and (max-width: 480px) {
+  .mediaBanner__imgContainer img {
+    width: 85%;
+    margin: auto;
+}
+
+  .mediaBanner__imgContainer{
+    width: 90%;
+  }
+  .mediaBanner .--dub_banner{
+    width: 90%;
+  }
+  .mediaBanner__contentContainer section {
+all: unset;
+  }
+  .mediaBanner__title{
+    display: none;
+  }
+
+  .--banner-grid--2,
+  .--banner-grid--12 {
+    width: 100%;
+  }
+
+  .--banner-grid--2>* {
+    width: auto;
+  }
+
+  .mediaBanner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .--banner-grid--12 img,
+  .mediaBanner img {
+    width: 100%;
+  }
+
+  .mediaBanner .--dub_banner {
+    padding: 20px;
+  }
+
+  .--tegel-banner-grid {
+    width: 100%;
+  }
+
+  .mediaBanner__cta {
+    margin-top: 0;
+  }
+
+  /* CSS */
+}
+
+/*# sourceMappingURL=bannerStyle.css.map */

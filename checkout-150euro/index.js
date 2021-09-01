@@ -19,7 +19,7 @@ $(document).ready(function(){
   '</div>';
 
   if(XTcurrentPriceParsed >= 150 ){
-   XTbasketTotalItems.insertAdjacentHTML("beforeend", XTnewContent);
+   XTbasketTotalItems.insertAdjacentHTML("afterend", XTnewContent);
   }
   else{
     // do nothing

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<head>
+  <html lang="en">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Im doin' dumb shit leave me alone</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- TODO -->
+  <script>
+    $(document).ready(function () {
+
+      const XTextraUl = '<ul data-group="categoriën" id="newSearchResults" class="c-header__search-suggestions-list_new"></ul>';
+
+      document.getElementsByClassName('c-header__search-suggestions-list')[1].setAttribute("data-group", "Zoeksuggesties");
+      document.getElementsByClassName('c-header__search-suggestions-list')[1].insertAdjacentHTML("beforebegin", XTextraUl);
+const XTfirstLineInSearchOutput = document.getElementById('newSearchResults');
+      // Blame lupet for the shitty code. Cuz I wrote it
+
+      // These are all the "possible" input with all the needed info. Here I will check if the input value in the searchbar is equal or partly equal to the inputs that I have stored here
+      let searchTerms = [{
+          input: "chips",
+          url: "google.com",
+          possibleInputs: ["chi", "chip", "chips"],
+          outputs: {
+            0: ["chips paprika", "google.com"],
+            1: ["chips zout", "google.com"],
+            2: ["chips peper & zout", "google.com"],
+            3: ["chips pickles", "google.com"],
+          }
+        },
+        {
+          input: "melk",
+          url: "google.com",
+          possibleInputs: ["mel", "melk"],
+          outputs: {
+            0: ["Halvolle melk", "google.com"],
+            1: ["Lactosevrije melk", "google.com"],
+            2: ["Magere melk", "google.com"],
+            3: ["Volle melk", "google.com"],
+          }
+        },
+        {
+          input: "kaas",
+          url: "google.com",
+          possibleInputs: ["kaa", "kaas"],
+          outputs: {
+            0: ["blok kaas", "google.com"],
+            1: ["zachte kazen", "google.com"],
+            2: ["geraspte kaas", "google.com"],
+            3: ["aperitief kaas", "google.com"],
+            4: ["sneetjes kaas Gouda", "google.com"],
+          }
+        },
+        {
+          input: "yoghurt",
+          url: "google.com",
+          possibleInputs: ["yog", "yogh", "yoghu", "yoghur", "yoghurt"],
+          outputs: {
+            0: ["volle yoghurt natuur", "google.com"],
+            1: ["magere yoghurt natuur", "google.com"],
+            2: ["Volle yoghurt fruit", "google.com"],
+            3: ["magere yoghurt fruit", "google.com"],
+            4: ["griekse yoghurt fruit", "google.com"],
+          }
+        }
+      ];
+      //Empty array. Is used for storage later
+      //TODO Do not forget to empty this array each time the input value changes. Dudoi
+      let mainUl = [];
+      const searchBarOnSite = document.getElementsByClassName('c-header__search-input')[1];
+      console.log(searchBarOnSite);
+      searchBarOnSite.addEventListener('input', showMeStuff);
+
+
+      function showMeStuff(val) {
+        //console.log(val.data)
+        console.log(document.getElementsByClassName('c-header__search-input')[1].value);
+        let XTsearchBoxInput = document.getElementsByClassName('c-header__search-input')[1].value;
+        for (let i = 0; i < searchTerms.length; i++) {
+          if (searchTerms[i].input.includes(XTsearchBoxInput) && XTsearchBoxInput.length >= 3) {
+            getCurrentObject(i);
+            break;
+          } else {
+            deleteEverything();
+          }
+        }
+      }
+
+      function getCurrentObject(val) {
+        // this gets the amount of ouputs there are for the current search
+        const currentSearchTerm = Object.keys(searchTerms[val].outputs).length
+        for (i = 0; i < currentSearchTerm; i++) {
+          let currentOutputBasedOnI = searchTerms[val].outputs[i];
+          console.log(currentOutputBasedOnI[0]);
+          createNewUl(currentOutputBasedOnI);
+        }
+        //const writestuffhere = document.getElementById("writestuffhere");
+
+
+        //XTfirstLineInSearchOutput.insertAdjacentHTML("afterbegin", mainUl.join(""));
+        XTfirstLineInSearchOutput.append(mainUl.join(""));
+
+        let newSearchResultsChilds = XTfirstLineInSearchOutput.childElementCount;
+        document.getElementsByClassName('c-header__search-suggestions-list')[1].style.top = "calc(100% + " + 2 + +29 * newSearchResultsChilds + "px)";
+        //writestuffhere.innerHTML = mainUl.join("");
+        mainUl.splice(0, mainUl.length)
+
+      }
+
+      function createNewUl(val) {
+        let tempUl = '<li class="c-header__search-suggestions-product">' +
+          '  <a class="c-header__search-suggestions-item" href=" ' + val[1] + ' ">' +
+          '    <span class="c-header__search-suggestions-item-keyword">' + val[0] + '</span>' +
+          '  </a>' +
+          '  <div class="c-header__search-suggestions-append" data-search-product="chips"></div>' +
+          '</li>'
+        mainUl.push(tempUl);
+        //console.log(mainUl.join(""));
+      }
+    });
+
+    function deleteEverything() {
+      XTfirstLineInSearchOutput.innerHTML = "";
+          document.getElementsByClassName('c-header__search-suggestions-list')[1].style.top = "100%";
+    }
+  </script>
+</head>
+
+<body>
+  <h1></h1>
+  <h2>Click one</h2>
+  <br>
+  <input id="inputBitch" type="text">
+  <br>
+  <br>
+  <button onclick="showMeStuff('chips');">chips</button>
+  <button onclick="showMeStuff('kaas');">kaas</button>
+  <button onclick="showMeStuff('yoghurt');">yogurt</button>
+  <button onclick="showMeStuff('melk');">melk</button>
+
+  <div id="writestuffhere"></div>
+</body>
+
+</html>
