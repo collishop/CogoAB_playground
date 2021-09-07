@@ -6,8 +6,18 @@ $(document).ready(function () {
     item.addEventListener("click", (event) => {
       //handle click
       let XTcurrentAddedProduct = item.parentElement.parentElement.parentElement;
-      let XTcurrentAmountOfShit = XTcurrentAddedProduct.querySelectorAll(".product_overlay_text");
-      console.log(XTcurrentAmountOfShit[0]);
+      console.log(XTcurrentAddedProduct);
+      XTcurrentAddedProductDataAttr = XTcurrentAddedProduct.getAttribute("data-product-id");
+      console.log(XTcurrentAddedProductDataAttr);
+
+      XTproductFullTileHTML = document.getElementsByClassName("product_container_" + XTcurrentAddedProductDataAttr)[0];
+      console.log(XTproductFullTileHTML);
+
+      let XTleavemealone = parseInt(XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.trim().split(" ")[0]) + 1;
+      console.log(XTleavemealone);
+      // let XTcurrentAmountOfShit = document.querySelectorAll('[data-product-id="3074457345616686651"]').getElementsByClassName(".product_overlay_text")[0];
+      //let XTcurrentAmountOfShit = XTcurrentAddedProduct.querySelectorAll(".product_overlay_text");
+      // console.log(XTcurrentAmountOfShit);
       //XTaddClick(XTcurrentAddedProduct);
     });
   });
