@@ -3,17 +3,17 @@ $(document).ready(function () {
   const XTallAddButtons = document.getElementsByClassName("--add");
 
   XToverlay =
-    '<section id="XToverlaycontainer" style="display: none;justify-content: center;">' +
+    '<section  id="XToverlaycontainer" style="display: none;justify-content: center;width: 100%;height: 100vh;background: rgba(255, 255, 255, 0.9);top: 0px;position: fixed;">' +
     ' <div id="XToverlay" style="position: fixed;background: white;width: 25%;top: 20%;text-align: center;border: solid 1px #d6d6d6;border-radius: 5px; "><div id="XTsubOverlay" style="position:relative">' +
     '   <h3 style="padding: 20px 0 0 0;">Voeg je gratis product toe</h3>' +
     '   <section style=" display: flex; justify-content: center; padding: 35px 35px 35px 45px; ">' +
-    '     <div style="width: 343px;" id="XTappendHere"></div>' +
+    '     <div  style="width: 343px;" id="XTappendHere"></div>' +
     '   </section><span id="XTremoveOverlay" style="position: absolute; top: 5px; right: 5px; cursor: pointer;"><a ">X</a></span>' +
     " </div>" +
     " </div>" +
     "</section>";
-  document.getElementById("mainContent").style.position = "relative";
-  document.getElementById("mainContent").insertAdjacentHTML("beforeend", XToverlay);
+  document.getElementsByTagName("body")[0].style.position = "relative";
+  document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", XToverlay);
 
   document.querySelectorAll(".--add").forEach((item) => {
     item.addEventListener("click", (event) => {
@@ -27,9 +27,16 @@ $(document).ready(function () {
       //console.log(XTproductFullTileHTML);
 
       let XTcapAmountInBasket = parseInt(XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.trim().split(" ")[0]) + 1;
-      //console.log(XTcapAmountInBasket);
 
-      if (XTcapAmountInBasket === 6) {
+      //console.log(XTcapAmountInBasket);
+      if (XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ").length === 4) {
+        console.log(XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ").length);
+        console.log("Tes 1 x X");
+      } else if (XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ").length === 2) {
+        console.log(XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ").length);
+        console.log("Tes 1ne");
+      }
+      if (XTcapAmountInBasket === 6 || XTcapAmountInBasket === 12 || XTcapAmountInBasket === 18 || XTcapAmountInBasket === 24) {
         CreatePopUp(XTcapDataAttr);
       } else if (XTcapAmountInBasket <= 6) {
         //!Create visual for amount of things in basket
@@ -41,7 +48,16 @@ $(document).ready(function () {
   });
 
   //- Block to remove our special pop up
+  document.getElementById("XToverlay").click(function (event) {
+    console.log("bubling stopped?");
+    event.stopPropagation();
+  });
+  document.getElementById("XToverlaycontainer").click(function (event) {
+    console.log("testio");
+    XTdeleteOverlayContent();
+  });
   document.getElementById("XTremoveOverlay").addEventListener("click", XTdeleteOverlayContent);
+  //document.getElementById("XToverlaycontainer").addEventListener("click", XTdeleteOverlayContent);
   function XTdeleteOverlayContent() {
     console.log("test");
     document.getElementById("XTappendHere").getElementsByClassName("plp-item")[0].remove();
@@ -129,25 +145,5 @@ $(document).ready(function () {
     document.getElementById("XTappendHere").appendChild(XTclone);
     document.getElementById("XToverlaycontainer").style.display = "flex";
     console.log("actually created");
-  }
-
-  //* Remove if work around is found
-  function XtStartListenerForRemove() {
-    document.addEventListener("click", (evt) => {
-      const flyoutEl = document.getElementById("XToverlaycontainer");
-      let targetEl = evt.target; // clicked element
-      do {
-        if (targetEl == flyoutEl) {
-          // This is a click inside, does nothing, just return.
-          console.log("Clicked inside!");
-          return;
-        }
-        // Go up the DOM
-        targetEl = targetEl.parentNode;
-      } while (targetEl);
-      XTdeleteOverlayContent();
-      // This is a click outside.
-      console.log("Clicked outside!");
-    });
   }
 });
