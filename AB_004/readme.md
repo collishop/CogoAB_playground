@@ -53,3 +53,12 @@ N'oubliez pas votre produit gratuit.
         XTproductToCopy = document.getElementsByClassName("product_container_3074457345616781349")[0];
         //XTappendCloneToOverlay(XTproductToCopy);
         break;
+
+plp-item
+
+# XTsubOverlay #XTappendHere > \*:not(:first-child){
+
+display: none !important
+}
+
+element \*:not(:first-child)

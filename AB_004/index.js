@@ -1,15 +1,14 @@
 $(document).ready(function () {
-  console.log("started");
   const XTallAddButtons = document.getElementsByClassName("--add");
   let XTsumOfAddedBottles;
   let XTsumOfFreeAddedBottles;
   XToverlay =
     '<section  id="XToverlaycontainer" style="display: none;justify-content: center;width: 100%;height: 100vh;background: rgba(255, 255, 255, 0.9);top: 0px;position: fixed;">' +
-    ' <div id="XToverlay" style="position: fixed;background: white;width: 25%;top: 20%;text-align: center;border: solid 2px #2287c7;border-radius: 5px; "><div id="XTsubOverlay" style="position:relative">' +
+    ' <div id="XToverlay" style="position: fixed;background: white;width: 400px;top: 20%;text-align: center;border: solid 2px #2287c7;border-radius: 5px; "><div id="XTsubOverlay" style="position:relative">' +
     '   <h3 style="padding: 20px 0 0 0;">Vergeet je gratis product niet</h3>' +
     '   <section style=" display: flex; justify-content: center; padding: 35px 35px 35px 45px; ">' +
     '     <div  style="width: 343px;" id="XTappendHere"></div>' +
-    '   </section><span id="XTremoveOverlay" style="position: absolute; top: 5px; right: 5px; cursor: pointer;"><a ">X</a></span>' +
+    '   </section><span id="XTremoveOverlay" style="position: absolute; top: 5px; right: 5px; cursor: pointer;"><a style=" font-weight: bold; font-size: 18px; margin-right: 4px; "><strong>X</strong></a></span>' +
     " </div>" +
     " </div>" +
     "</section>";
@@ -30,14 +29,12 @@ $(document).ready(function () {
           XTsumOfAddedBottles =
             XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ")[0] *
             XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ")[2];
-          console.log(XTsumOfAddedBottles);
+
           if (XTsumOfAddedBottles === 6 || XTsumOfAddedBottles === 12 || XTsumOfAddedBottles === 18 || XTsumOfAddedBottles === 24) {
-            console.log("Sent from 4.length" + XTcapDataAttr + " " + XTcapAmountInBasket);
             CreatePopUp(XTcapDataAttr, XTsumOfAddedBottles);
           }
         } else if (XTproductFullTileHTML.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ").length === 2) {
           if (XTcapAmountInBasket === 6 || XTcapAmountInBasket === 12 || XTcapAmountInBasket === 18 || XTcapAmountInBasket === 24) {
-            console.log("Sent from 2.length" + XTcapDataAttr + " " + XTcapAmountInBasket);
             CreatePopUp(XTcapDataAttr, XTcapAmountInBasket);
           }
         }
@@ -53,9 +50,10 @@ $(document).ready(function () {
     XTdeleteOverlayContent();
   });
   document.getElementById("XTremoveOverlay").addEventListener("click", XTdeleteOverlayContent);
+
   //document.getElementById("XToverlaycontainer").addEventListener("click", XTdeleteOverlayContent);
   function XTdeleteOverlayContent() {
-    document.getElementById("XTappendHere").getElementsByClassName("plp-item")[0].remove();
+    for (i = 0; i <= document.getElementById("XTappendHere").getElementsByClassName("plp-item").length; i++) document.getElementById("XTappendHere").getElementsByClassName("plp-item")[0].remove();
     document.getElementById("XToverlaycontainer").style.display = "none";
   }
   //- Block to create the different kinds of pop ups. This might be simplified in the future.
@@ -66,7 +64,7 @@ $(document).ready(function () {
     let XTproductToCopy;
     let XTinhoudFreeproductAmountInBasket;
     let XTclone;
-    console.log("in switch");
+
     switch (XTcapDataAttr) {
       case "3074457345616686651":
         XTproductToCopy = document.getElementsByClassName("product_container_3074457345616700299")[0];
@@ -118,24 +116,15 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log(`Sorry, we are out of ${XTcapDataAttr}.`);
     }
-    // const XTinnerOverlayProductTile = document.getElementById("XTsubOverlay").getElementsByClassName("plp-item")[0];
-    // console.log(XTinnerOverlayProductTile);
-    // XTinnerOverlayProductTile.addEventListener("click", XTdeleteOverlayContent);
+    const XTinnerOverlayProductTile = document.getElementById("XTsubOverlay").getElementsByClassName("--add")[0];
+    XTinnerOverlayProductTile.addEventListener("click", XTdeleteOverlayContent);
   }
   let ThisIsntAtest;
-
   function XTcontroleIfPeopleAlreadyAddedTheFreeProduct(XTproductToCopy, XTcapAmountInBasket) {
-    console.log(XTsumOfAddedBottles);
-    console.log(XTcapAmountInBasket + " _ Totale amount in basket");
     XTinhoudFreeproductAmountInBasket = XTproductToCopy.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ");
-    console.log(XTproductToCopy.getElementsByClassName("product_overlay_text")[0]);
-    console.log(window.getComputedStyle(XTproductToCopy.getElementsByClassName("product_overlay")[0], null).display);
-    console.log(XTinhoudFreeproductAmountInBasket + " _ inhoud free prodcucts in basket");
+
     if (XTinhoudFreeproductAmountInBasket.length === 2) {
-      console.log("Dit is de length 2 pad");
-      console.log(XTcapAmountInBasket / (parseInt(XTproductToCopy.getElementsByClassName("product_overlay_text")[0].innerHTML.trim().split(" ")[0]) + 1) + " _ BasketProds/BasketFreeprods");
       if (
         XTcapAmountInBasket / (parseInt(XTproductToCopy.getElementsByClassName("product_overlay_text")[0].innerHTML.trim().split(" ")[0]) + 1) >= 6 ||
         window.getComputedStyle(XTproductToCopy.getElementsByClassName("product_overlay")[0], null).display === "none"
@@ -143,12 +132,9 @@ $(document).ready(function () {
         XTappendCloneToOverlay(XTproductToCopy);
       }
     } else if (XTinhoudFreeproductAmountInBasket.length === 4) {
-      console.log("lengte is 4");
       XTsumOfFreeAddedBottles =
         XTproductToCopy.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ")[0] * XTproductToCopy.getElementsByClassName("product_overlay_text")[0].innerHTML.split(" ")[2];
-      console.log(XTsumOfFreeAddedBottles + " _ inhoud free producsts basket");
-      console.log(XTcapAmountInBasket / parseInt(XTsumOfAddedBottles) + " _ Basketprds/BasketFreeprods");
-      console.log(XTcapAmountInBasket / (parseInt(XTsumOfAddedBottles) + 1) + " _ Basketprds/BasketFreeprods");
+
       if (XTcapAmountInBasket / (parseInt(XTsumOfFreeAddedBottles) + 1) >= 6 || window.getComputedStyle(XTproductToCopy.getElementsByClassName("product_overlay")[0], null).display === "none") {
         XTappendCloneToOverlay(XTproductToCopy);
       }
