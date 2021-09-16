@@ -109,7 +109,6 @@ $(document).ready(function () {
         console.log(iframeWindowXT);
         console.log(iframeDocmentXT);
 
-        iframeDocmentXT.body.style.backgroundColor = "#dedede";
         const XTiframeBody = iframeDocmentXT.body;
 
         XTiframeBody.getElementsByClassName("l-grid")[1].getElementsByClassName("o-heading-2")[0].parentElement.style.display = "none";
