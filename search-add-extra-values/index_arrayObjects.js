@@ -1,16 +1,15 @@
 $(document).ready(function () {
+  //Creating a placeholder for the extra category search results. So here we target the "hidden" searchdropdown & yeet the extra UL in there. Ezy pzy
   const XTextraUl = '<ul data-group="categoriën" id="newSearchResults" class="c-header__search-suggestions-list_new"></ul>';
-
   document.getElementsByClassName("c-header__search-suggestions-list")[1].setAttribute("data-group", "Zoeksuggesties");
   document.getElementsByClassName("c-header__search-suggestions-list")[1].insertAdjacentHTML("beforebegin", XTextraUl);
   const XTfirstLineInSearchOutput = document.getElementById("newSearchResults");
   // Blame lupet for the shitty code. Cuz I wrote it ;)
 
-  // These are all the "possible" input with all the needed info. Here I will check if the input value in the searchbar is equal or partly equal to the inputs that I have stored here
-  let searchTerms = [
+  // These are all the "possible" input with all the needed info. Here we will check if the input value in the searchbar is equal or partly equal to the inputs that are stored here
+  let XTsearchTerms = [
     {
       input: "chips",
-
       outputs: {
         0: ["chips paprika", "/colruyt/nl/assortiment/chips-paprika?rootCategoryId=20009"],
         1: ["chips zout", "/colruyt/nl/assortiment/chips-zout?rootCategoryId=20009"],
@@ -21,7 +20,6 @@ $(document).ready(function () {
     },
     {
       input: "melk",
-
       outputs: {
         0: ["Halvolle melk", "/colruyt/nl/assortiment/halfvolle-melk?rootCategoryId=20005"],
         1: ["Lactosevrije melk", "/colruyt/nl/assortiment/lactosevrije-melk?rootCategoryId=20005"],
@@ -32,7 +30,6 @@ $(document).ready(function () {
     },
     {
       input: "kaas",
-
       outputs: {
         0: ["blok kaas", "/colruyt/nl/assortiment/blok-kaas?rootCategoryId=20005"],
         1: ["zachte kazen", "/colruyt/nl/assortiment/zachte-kazen?rootCategoryId=20005"],
@@ -44,7 +41,6 @@ $(document).ready(function () {
     },
     {
       input: "yoghurt",
-
       outputs: {
         0: ["volle yoghurt natuur", "/colruyt/nl/assortiment/volle-yoghurt-natuur? rootCategoryId=20005"],
         1: ["magere yoghurt natuur", "/colruyt/nl/assortiment/magere-yoghurt-natuur?rootCategoryId=20005"],
@@ -55,52 +51,44 @@ $(document).ready(function () {
       },
     },
   ];
-  //Empty array. Is used for storage later
+  //Empty array. Is used for storage later. Here we will input all the output html code for a certain search input.
   //TODO Do not forget to empty this array each time the input value changes. Dudoi
-  let mainUl = [];
+  let XTmainUl = [];
   const searchBarOnSite = document.getElementsByClassName("c-header__search-input")[1];
-  //console.log(searchBarOnSite);
-  searchBarOnSite.addEventListener("input", showMeStuff);
+  searchBarOnSite.addEventListener("input", XTshowMeStuff);
 
-  function showMeStuff(val) {
-    //console.log(val.data)
-    //console.log(document.getElementsByClassName("c-header__search-input")[1].value);
+  function XTshowMeStuff(val) {
     let XTsearchBoxInput = document.getElementsByClassName("c-header__search-input")[1].value;
-    for (let i = 0; i < searchTerms.length; i++) {
-      if (searchTerms[i].input.includes(XTsearchBoxInput.toLowerCase()) && XTsearchBoxInput.length >= 3) {
-        getCurrentObject(i);
+    for (let i = 0; i < XTsearchTerms.length; i++) {
+      if (XTsearchTerms[i].input.includes(XTsearchBoxInput.toLowerCase()) && XTsearchBoxInput.length >= 3) {
+        XTgetCurrentObject(i);
         break;
       } else {
-        deleteEverything();
+        XTdeleteEverything();
       }
     }
   }
 
-  function getCurrentObject(val) {
+  function XTgetCurrentObject(val) {
     // this gets the amount of ouputs there are for the current search
-    const currentSearchTerm = Object.keys(searchTerms[val].outputs).length;
-    //console.log(currentSearchTerm);
+    const currentSearchTerm = Object.keys(XTsearchTerms[val].outputs).length;
     for (i = 0; i < currentSearchTerm; i++) {
-      //console.log(i);
-      let currentOutputBasedOnI = searchTerms[val].outputs[i];
-      //console.log(currentOutputBasedOnI[0]);
+      let currentOutputBasedOnI = XTsearchTerms[val].outputs[i];
       createNewUl(currentOutputBasedOnI);
     }
     //const writestuffhere = document.getElementById("writestuffhere");
 
     document.getElementById("newSearchResults").innerHTML = "";
-    XTfirstLineInSearchOutput.insertAdjacentHTML("afterbegin", mainUl.join(""));
-    //XTfirstLineInSearchOutput.append(mainUl.join(""));
-    //console.log(currentSearchTerm);
+    XTfirstLineInSearchOutput.insertAdjacentHTML("afterbegin", XTmainUl.join(""));
+    //XTfirstLineInSearchOutput.append(XTmainUl.join(""));
     let newSearchResultsChilds = XTfirstLineInSearchOutput.childElementCount;
     document.getElementsByClassName("c-header__search-suggestions-list")[1].style.top = "calc(100% + " + 29 * currentSearchTerm + "px)";
-    //writestuffhere.innerHTML = mainUl.join("");
-    mainUl.splice(0, mainUl.length);
+    //writestuffhere.innerHTML = XTmainUl.join("");
+    XTmainUl.splice(0, XTmainUl.length);
   }
 
   function createNewUl(val) {
-    //console.log(val + "test");
-    let tempUl =
+    let XTtempUl =
       '<li class="c-header__search-suggestions-product">' +
       '  <a class="c-header__search-suggestions-item" href="' +
       val[1] +
@@ -111,11 +99,10 @@ $(document).ready(function () {
       "  </a>" +
       '  <div class="c-header__search-suggestions-append" data-search-product="chips"></div>' +
       "</li>";
-    mainUl.push(tempUl);
-    //console.log(mainUl.join(""));
+    XTmainUl.push(XTtempUl);
   }
 
-  function deleteEverything() {
+  function XTdeleteEverything() {
     //XTfirstLineInSearchOutput.innerHTML = "";
     document.getElementById("newSearchResults").innerHTML = "";
     document.getElementsByClassName("c-header__search-suggestions-list")[1].style.top = "100%";
