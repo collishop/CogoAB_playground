@@ -1,0 +1,55 @@
+<script>
+  $(document).ready(function () {
+    //console.log("ready");
+    const buyAllButton = document.getElementById("buyAllButtonXT");
+    const removeAllButton = document.getElementById("removeAllButtonXT");
+    buyAllButton.addEventListener("click", buyThisRowOfProdcuts);
+    removeAllButton.addEventListener("click", RemoveThisRowOfProdcuts);
+
+    function buyThisRowOfProdcuts() {
+      const allBuyButtons = document.getElementsByClassName("--add");
+      //console.log(allBuyButtons);
+      for (var i = 0; i < allBuyButtons.length; i++) {
+        //console.log(allBuyButtons[i]);
+        $(allBuyButtons[i]).click();
+        //console.log(allBuyButtons[i]); //second console output
+      }
+    }
+
+    function RemoveThisRowOfProdcuts() {
+      const allRemoveButtons = document.getElementsByClassName("--remove");
+      //console.log(allRemoveButtons);
+      for (var i = 0; i < allRemoveButtons.length; i++) {
+        //console.log(allRemoveButtons[i]);
+        $(allRemoveButtons[i]).click();
+        //console.log(allRemoveButtons[i]); //second console output
+      }
+    }
+    // allBuyButtons[0].addEventListener("click", ThingJustClicked);
+    // function TestFunction() {
+    //   //console.log("test")
+    // }
+
+    // function ThingJustClicked() {
+    //   //console.log("smth clicked");
+    // }
+
+  });
+</script>
+
+<div class="buttoncontainer">
+  <h1>Fantastic new feature! -></h1>
+  <div>
+    <a class="btn buttonsXT" id="buyAllButtonXT" href="#">Buy all these products</a>
+    <a class="btn buttonsXT" id="removeAllButtonXT" href="#">Oh no! changed my mind button</a>
+  </div>
+</div>
+
+<style>
+  .buttoncontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+</style>

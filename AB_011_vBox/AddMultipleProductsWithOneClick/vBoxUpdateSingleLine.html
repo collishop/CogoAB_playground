@@ -1,0 +1,89 @@
+<script>
+  $(document).ready(function () {
+    const buyAllButton = document.getElementById("buyAllButtonXT");
+    const removeAllButton = document.getElementById("removeAllButtonXT");
+    buyAllButton.addEventListener("click", buyThisRowOfProdcuts);
+    removeAllButton.addEventListener("click", RemoveThisRowOfProdcuts);
+
+
+    const GourmetXT = document.getElementById("plp_product_11285-P");
+    const GourmetXTfooter = GourmetXT.getElementsByClassName("plp-item-footer")[0];
+    GourmetXTfooter.setAttribute("id", "gourmetXT");
+    // testXT[0].getElementsByClassName("plp-item-footer")[0].setAttribute('id', 'gourmetXT');
+
+    function buyThisRowOfProdcuts() {
+      const allBuyButtonsContainer = document.getElementsByClassName("c-product-slider")[0].getElementsByClassName("plp-item-footer"); //c-product-slider
+      let allBuyButtonsInsideContainer = "test";
+      for (var i = 0; i < allBuyButtonsContainer.length; i++) {
+        allBuyButtonsInsideContainer = document.getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--add");
+        if (allBuyButtonsInsideContainer[0].classList.contains("--weight")) {
+          $(allBuyButtonsInsideContainer)[1].click();
+        } else if (document.getElementsByClassName("plp-item-footer")[i].id === "gourmetXT") {
+          $(allBuyButtonsInsideContainer)[0].click();
+          $(allBuyButtonsInsideContainer)[0].click();
+          $(allBuyButtonsInsideContainer)[0].click();
+          $(allBuyButtonsInsideContainer)[0].click();
+        } else {
+          $(allBuyButtonsInsideContainer)[0].click();
+        }
+      }
+    }
+
+    function RemoveThisRowOfProdcuts() {
+      const allRemoveButtons = document.getElementsByClassName("c-product-slider")[0].getElementsByClassName("plp-item-footer");
+      for (var i = 0; i < allRemoveButtons.length; i++) {
+        allRemoveButtonsInsideContainer = document.getElementsByClassName("c-product-slider --grid-view")[0].getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--remove");
+        // $(allRemoveButtons[i]).click();
+
+        if (allRemoveButtonsInsideContainer[0].classList.contains("--weight")) {
+          $(allRemoveButtonsInsideContainer)[1].click();
+        } else if (document.getElementsByClassName("plp-item-footer")[i].id === "gourmetXT") {
+          $(allRemoveButtonsInsideContainer)[0].click();
+          $(allRemoveButtonsInsideContainer)[0].click();
+          $(allRemoveButtonsInsideContainer)[0].click();
+          $(allRemoveButtonsInsideContainer)[0].click();
+        } else {
+          $(allRemoveButtonsInsideContainer)[0].click();
+        }
+      }
+    }
+  });
+</script>
+<div class="buttoncontainer">
+  <h2 class="o-heading-2">
+    <!-- BEGIN ESpotTitle_UI.jspf -->
+    <div class="titleItems">
+      <h2 class="u-mb-20">Een selectie voor jou!</h2>
+    </div>
+    <!-- END ESpotTitle_UI.jspf -->
+  </h2>
+  <div>
+    <a class="btn buttonsXT" id="buyAllButtonXT">Voeg alle producten toe</a>
+    <a class="" id="removeAllButtonXT">Verwijderen</a>
+  </div>
+</div>
+<style>
+  .buttoncontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .buttoncontainer a {
+    cursor: pointer;
+  }
+
+  .buttoncontainer a#removeAllButtonXT {
+    margin-left: 7px;
+    color: #0587C7;
+    text-decoration: underline;
+  }
+  .buttoncontainer a{
+    display: none;
+  }
+  a#buyAllButtonXT:hover {
+    color: white;
+}
+</style>

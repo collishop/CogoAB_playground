@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //Creating a placeholder for the extra category search results. So here we target the "hidden" searchdropdown & yeet the extra UL in there. Ezy pzy
-  const XTextraUl = '<ul data-group="Categoriën" id="newSearchResults" class="c-header__search-suggestions-list_new"></ul>';
+  const XTextraUl = '<ul data-group="Catégories" id="newSearchResults" class="c-header__search-suggestions-list_new"></ul>';
   document.getElementsByClassName("c-header__search-suggestions-list")[1].setAttribute("data-group", "Zoeksuggesties");
   document.getElementsByClassName("c-header__search-suggestions-list")[1].insertAdjacentHTML("beforebegin", XTextraUl);
   const XTfirstLineInSearchOutput = document.getElementById("newSearchResults");
@@ -11,42 +11,42 @@ $(document).ready(function () {
     {
       input: "chips",
       outputs: {
-        0: ["chips paprika", "/colruyt/nl/assortiment/chips-paprika?rootCategoryId=20009"],
-        1: ["chips zout", "/colruyt/nl/assortiment/chips-zout?rootCategoryId=20009"],
-        2: ["chips peper & zout", "/colruyt/nl/assortiment/chips-peper-zout?rootCategoryId=20009"],
-        3: ["chips pickles", "/colruyt/nl/assortiment/chips-pickles?rootCategoryId=20009"],
+        0: ["Chips au paprika", "/colruyt/fr/assortiment/chips-au-paprika?rootCategoryId=20009"],
+        1: ["Chips au sel", "/colruyt/fr/assortiment/chips-sel?rootCategoryId=20009"],
+        2: ["Chips poivre et sel", "/colruyt/fr/assortiment/chips-poivre-sel?rootCategoryId=20009"],
+        3: ["Chips au pickles", "/colruyt/fr/assortiment/pickles-chips?rootCategoryId=20009"],
         4: ["", ""],
       },
     },
     {
-      input: "melk",
+      input: "laits",
       outputs: {
-        0: ["Halvolle melk", "/colruyt/nl/assortiment/halfvolle-melk?rootCategoryId=20005"],
-        1: ["Lactosevrije melk", "/colruyt/nl/assortiment/lactosevrije-melk?rootCategoryId=20005"],
-        2: ["Magere melk", "/colruyt/nl/assortiment/magere-melk?rootCategoryId=20005"],
-        3: ["Volle melk", "/colruyt/nl/assortiment/volle-melk?rootCategoryId=20005"],
+        0: ["Laits demi-écrémés", "/colruyt/fr/assortiment/laits-demi-ecremes?rootCategoryId=20005"],
+        1: ["Laits sans lactose", "/colruyt/fr/assortiment/laits-sans-lactose?rootCategoryId=20005"],
+        2: ["Laits ecremes", "/colruyt/fr/assortiment/laits-ecremes?rootCategoryId=20005"],
+        3: ["Laits entiers", "/colruyt/fr/assortiment/laits-entiers?rootCategoryId=20005"],
         4: ["", ""],
       },
     },
     {
-      input: "kaas",
+      input: "fromages",
       outputs: {
-        0: ["blok kaas", "/colruyt/nl/assortiment/blok-kaas?rootCategoryId=20005"],
-        1: ["zachte kazen", "/colruyt/nl/assortiment/zachte-kazen?rootCategoryId=20005"],
-        2: ["geraspte kaas", "/colruyt/nl/assortiment/geraspte-kaas?rootCategoryId=20005"],
-        3: ["aperitief kaas", "/colruyt/nl/assortiment/aperitief-kaas?rootCategoryId=20005"],
-        4: ["sneetjes kaas Gouda", "/colruyt/nl/assortiment/sneetjes-gouda?rootCategoryId=20005"],
+        0: ["Fromages en blocs", "/colruyt/fr/assortiment/fromages-en-blocs?rootCategoryId=20005"],
+        1: ["Fromages à pâte molle", "/colruyt/fr/assortiment/fromages-pate-molle?rootCategoryId=20005"],
+        2: ["Fromages rapés", "/colruyt/fr/assortiment/fromages-rapes?rootCategoryId=20005"],
+        3: ["Fromages apéro", "/colruyt/fr/assortiment/fromages-apero?rootCategoryId=20005"],
+        4: ["Fromages en tranches genre Gouda", "/colruyt/fr/assortiment/fromage-tranches-gouda?rootCategoryId=20005"],
         5: ["", ""],
       },
     },
     {
-      input: "yoghurt",
+      input: "yaourt",
       outputs: {
-        0: ["volle yoghurt natuur", "/colruyt/nl/assortiment/volle-yoghurt-natuur?rootCategoryId=20005"],
-        1: ["magere yoghurt natuur", "/colruyt/nl/assortiment/magere-yoghurt-natuur?rootCategoryId=20005"],
-        2: ["Volle yoghurt fruit", "/colruyt/nl/assortiment/volle-yoghurt-fruit?rootCategoryId=20005"],
-        3: ["magere yoghurt fruit", "/colruyt/nl/assortiment/magere-yoghurt-fruit?rootCategoryId=20005"],
-        4: ["griekse yoghurt fruit", "/colruyt/nl/assortiment/griekse-yoghurt-fruit?rootCategoryId=20005"],
+        0: ["Yaourt nature entier", "/colruyt/fr/assortiment/yaourt-nature-entier?rootCategoryId=20005"],
+        1: ["Yaourt nature maigre", "/colruyt/fr/assortiment/yaourt-nature-maigre?rootCategoryId=20005"],
+        2: ["Yaourt aux fruits entier", "/colruyt/fr/assortiment/yaourt-aux-fruits-entier?rootCategoryId=20005"],
+        3: ["Yaourt aux fruits maigre", "/colruyt/fr/assortiment/yaourt-aux-fruits-maigre?rootCategoryId=20005"],
+        4: ["Yaourt nature grec", "/colruyt/fr/assortiment/yaourt-nature-grec?rootCategoryId=20005"],
         5: ["", ""],
       },
     },

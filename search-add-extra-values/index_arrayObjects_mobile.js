@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const XTextraUl = '<ul data-group="categoriën" id="newSearchResults" class="c-header__search-suggestions-list_new"></ul>';
+  const XTextraUl = '<ul data-group="Categoriën" id="newSearchResults" class="c-header__search-suggestions-list_new"></ul>';
 
   document.getElementsByClassName("c-header__search-suggestions-list")[0].setAttribute("data-group", "Zoeksuggesties");
   document.getElementsByClassName("c-header__search-suggestions-list")[0].insertAdjacentHTML("beforebegin", XTextraUl);
@@ -7,11 +7,9 @@ $(document).ready(function () {
   // Blame lupet for the shitty code. Cuz I wrote it ;)
 
   // These are all the "possible" input with all the needed info. Here I will check if the input value in the searchbar is equal or partly equal to the inputs that I have stored here
-  let searchTerms = [
+  let XTsearchTerms = [
     {
       input: "chips",
-      url: "google.com",
-      possibleInputs: ["chi", "chip", "chips"],
       outputs: {
         0: ["chips paprika", "/colruyt/nl/assortiment/chips-paprika?rootCategoryId=20009"],
         1: ["chips zout", "/colruyt/nl/assortiment/chips-zout?rootCategoryId=20009"],
@@ -22,8 +20,6 @@ $(document).ready(function () {
     },
     {
       input: "melk",
-      url: "google.com",
-      possibleInputs: ["mel", "melk"],
       outputs: {
         0: ["Halvolle melk", "/colruyt/nl/assortiment/halfvolle-melk?rootCategoryId=20005"],
         1: ["Lactosevrije melk", "/colruyt/nl/assortiment/lactosevrije-melk?rootCategoryId=20005"],
@@ -34,8 +30,6 @@ $(document).ready(function () {
     },
     {
       input: "kaas",
-      url: "google.com",
-      possibleInputs: ["kaa", "kaas"],
       outputs: {
         0: ["blok kaas", "/colruyt/nl/assortiment/blok-kaas?rootCategoryId=20005"],
         1: ["zachte kazen", "/colruyt/nl/assortiment/zachte-kazen?rootCategoryId=20005"],
@@ -47,10 +41,8 @@ $(document).ready(function () {
     },
     {
       input: "yoghurt",
-      url: "google.com",
-      possibleInputs: ["yog", "yogh", "yoghu", "yoghur", "yoghurt"],
       outputs: {
-        0: ["volle yoghurt natuur", "/colruyt/nl/assortiment/volle-yoghurt-natuur? rootCategoryId=20005"],
+        0: ["volle yoghurt natuur", "/colruyt/nl/assortiment/volle-yoghurt-natuur?rootCategoryId=20005"],
         1: ["magere yoghurt natuur", "/colruyt/nl/assortiment/magere-yoghurt-natuur?rootCategoryId=20005"],
         2: ["Volle yoghurt fruit", "/colruyt/nl/assortiment/volle-yoghurt-fruit?rootCategoryId=20005"],
         3: ["magere yoghurt fruit", "/colruyt/nl/assortiment/magere-yoghurt-fruit?rootCategoryId=20005"],
@@ -60,7 +52,7 @@ $(document).ready(function () {
     },
   ];
   //Empty array. Is used to store all the li-tags with URLs and text for web display
-  let mainUl = [];
+  let XTmainUl = [];
   const searchBarOnSite = document.getElementsByClassName("c-header__search-input")[0];
   //This is the trigger for the whole code. User types in the searchbar, then we will check if it matches or partly matches to the data-array above.
   searchBarOnSite.addEventListener("input", showMeStuff);
@@ -71,8 +63,8 @@ $(document).ready(function () {
 
     //get current value from the searchbar and store it in this variable. Then check if the variable input is partly one of the in the data-array. Also the input lenght must atleast be 3 long
     let XTsearchBoxInput = document.getElementsByClassName("c-header__search-input")[0].value;
-    for (let i = 0; i < searchTerms.length; i++) {
-      if (searchTerms[i].input.includes(XTsearchBoxInput.toLowerCase()) && XTsearchBoxInput.length >= 3) {
+    for (let i = 0; i < XTsearchTerms.length; i++) {
+      if (XTsearchTerms[i].input.includes(XTsearchBoxInput.toLowerCase()) && XTsearchBoxInput.length >= 3) {
         getCurrentObject(i);
         break;
       } else {
@@ -83,12 +75,12 @@ $(document).ready(function () {
 
   function getCurrentObject(val) {
     // This gets the amount of ouputs there are for the current search
-    const currentSearchTerm = Object.keys(searchTerms[val].outputs).length;
+    const currentSearchTerm = Object.keys(XTsearchTerms[val].outputs).length;
     console.log(currentSearchTerm);
     // Here we use a for loop to trigger a function for every individual output per possible (correct) input value. e.g: Yogurt has 4 outputs we want to display on the website
     for (i = 0; i < currentSearchTerm; i++) {
       //console.log(i);
-      let currentOutputBasedOnI = searchTerms[val].outputs[i];
+      let currentOutputBasedOnI = XTsearchTerms[val].outputs[i];
       //console.log(currentOutputBasedOnI[0]);
       // Here we use the info of the current
       createNewUl(currentOutputBasedOnI);
@@ -96,30 +88,30 @@ $(document).ready(function () {
     //const writestuffhere = document.getElementById("writestuffhere");
 
     document.getElementById("newSearchResults").innerHTML = "";
-    XTfirstLineInSearchOutput.insertAdjacentHTML("afterbegin", mainUl.join(""));
-    //XTfirstLineInSearchOutput.append(mainUl.join(""));
+    XTfirstLineInSearchOutput.insertAdjacentHTML("afterbegin", XTmainUl.join(""));
+    //XTfirstLineInSearchOutput.append(XTmainUl.join(""));
     console.log(currentSearchTerm);
     let newSearchResultsChilds = XTfirstLineInSearchOutput.childElementCount;
     document.getElementsByClassName("c-header__search-suggestions-list")[0].style.top = "calc(100% + " + 29 * currentSearchTerm + "px)";
-    //writestuffhere.innerHTML = mainUl.join("");
-    mainUl.splice(0, mainUl.length);
+    //writestuffhere.innerHTML = XTmainUl.join("");
+    XTmainUl.splice(0, XTmainUl.length);
   }
 
   function createNewUl(val) {
-    console.log(val + "test");
-    let tempUl =
+    let XTtempUl =
       '<li class="c-header__search-suggestions-product">' +
-      '  <a class="c-header__search-suggestions-item" href="' +
+      '  <a class="c-header__search-suggestions-item" data-tms-intpromo-name="ext_search_ ' +
+      val[0] +
+      '" data-tms-intpromo-id="search-extra-suggestions" href="' +
       val[1] +
       '">' +
       '    <span class="c-header__search-suggestions-item-keyword">' +
       val[0] +
       "</span>" +
       "  </a>" +
-      '  <div class="c-header__search-suggestions-append" data-search-product="chips"></div>' +
+      '  <div class="c-header__search-suggestions-append" data-search-product="search-extra-suggestions"></div>' +
       "</li>";
-    mainUl.push(tempUl);
-    //console.log(mainUl.join(""));
+    XTmainUl.push(XTtempUl);
   }
 
   function deleteEverything() {

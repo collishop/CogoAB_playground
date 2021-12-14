@@ -1,0 +1,87 @@
+<script>
+  $(document).ready(function () {
+    console.log("ready");
+    const buyAllButton = document.getElementById("buyAllButtonXT");
+    const removeAllButton = document.getElementById("removeAllButtonXT");
+    buyAllButton.addEventListener("click", buyThisRowOfProdcuts);
+    removeAllButton.addEventListener("click", RemoveThisRowOfProdcuts);
+    const GourmetXT = document.getElementById("plp_product_11285-P");
+    console.log(GourmetXT);
+    const GourmetXTfooter = GourmetXT.getElementsByClassName("plp-item-footer")[0];
+    console.log(GourmetXTfooter);
+    GourmetXTfooter.setAttribute("id", "gourmetXT");
+
+    function buyThisRowOfProdcuts() {
+      const allBuyButtonsContainer = document.getElementsByClassName("plp-item-footer");
+      let allBuyButtonsInsideContainer = "test";
+      for (var i = 0; i < allBuyButtonsContainer.length; i++) {
+        allBuyButtonsInsideContainer = document.getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--add");
+        console.log(allBuyButtonsInsideContainer[0].getAttribute("class"));
+        console.log(allBuyButtonsInsideContainer[0].classList);
+        if (allBuyButtonsInsideContainer[0].classList.contains("--weight")) {
+          console.log("Tes gewicht")
+          $(allBuyButtonsInsideContainer)[1].click();
+        } else if (document.getElementsByClassName("plp-item-footer")[i].id === "gourmetXT") {
+          $(allBuyButtonsInsideContainer)[0].click();
+          $(allBuyButtonsInsideContainer)[0].click();
+          $(allBuyButtonsInsideContainer)[0].click();
+          $(allBuyButtonsInsideContainer)[0].click();
+        } else {
+          $(allBuyButtonsInsideContainer)[0].click();
+        }
+      }
+    }
+
+    function RemoveThisRowOfProdcuts() {
+      const allRemoveButtons = document.getElementsByClassName("--remove");
+      for (var i = 0; i < allRemoveButtons.length; i++) {
+        allRemoveButtonsInsideContainer = document.getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--remove");
+        if (allRemoveButtonsInsideContainer[0].classList.contains("--weight")) {
+          console.log("Tes gewicht");
+          console.log(allRemoveButtonsInsideContainer[1]);
+          $(allRemoveButtonsInsideContainer)[1].click();
+        } else if (document.getElementsByClassName("plp-item-footer")[i].id === "gourmetXT") {
+          $(allRemoveButtonsInsideContainer)[0].click();
+          $(allRemoveButtonsInsideContainer)[0].click();
+          $(allRemoveButtonsInsideContainer)[0].click();
+          $(allRemoveButtonsInsideContainer)[0].click();
+        } else {
+          $(allRemoveButtonsInsideContainer)[0].click();
+        }
+
+      }
+    }
+  });
+</script>
+<div class="buttoncontainer">
+  <!-- <a class="btn buttonsXT" id="buyAllButtonXT">Voeg alle producten toe</a>
+  <a class="" id="removeAllButtonXT">Verwijderen</a> -->
+  <a class="btn buttonsXT" id="buyAllButtonXT">Tout ajouter au panier</a>
+    <a class="" id="removeAllButtonXT">Supprimer</a>
+</div>
+<style>
+  .buttoncontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .buttoncontainer a {
+    cursor: pointer;
+  }
+
+  .buttoncontainer a#removeAllButtonXT {
+    margin-left: 7px;
+    color: #0587C7;
+    text-decoration: underline;
+  }
+</style>
+
+
+
+
+
+
+
+
+Tout ajouter au panier
