@@ -1,0 +1,120 @@
+<h2 id="titleVbox"> hallo <h2>
+  <script>
+    $(document).ready(function () {
+      // Get the Activity string
+      const activityIdentiefierXT = document.getElementById("titleVbox").parentElement.parentElement.id.split('title')[1];
+      const actCatalogEntry = document.getElementById('catalogEntryRecommendationWidget' + activityIdentiefierXT); // Is the highest parent of the product carousel
+      const actContentRec = document.getElementById('contentRecommendationWidget' + activityIdentiefierXT); // Is the highest parent of the activity
+      
+      $(actCatalogEntry).appendTo(actContentRec); // Just move product carousel into the same parent as the content so we can style w/ flex-box or the like
+      console.log(actCatalogEntry.getElementsByClassName('c-product-slider__initialiser')[0]);
+      const actCarouselContainer = actCatalogEntry.getElementsByClassName('c-product-slider__initialiser')[0] ; // Here we target the element which contains the actual products. Needed for the check if all elements are there
+      actCarouselContainer.setAttribute('id','vBoxCarousel');
+       //actCarouselContainer.style.alignItems = "center";
+      console.log(actCarouselContainer.children.length) // IS the amount of products in the carousel
+
+      //.getElementsByClassName("--visible")
+
+      if(actCarouselContainer.children.length < 2){
+        actContentRec.style.display = "none";
+      }
+      else{
+        console.log('tf is your problem')
+      }
+      const plusTeken = '<div style="font-family: Asap; font-style: italic; font-weight: bold; font-size: 40px; line-height: 35px; color: #0587C7"> + </div>'
+      $(actCarouselContainer.children[0]).after(plusTeken);
+    }); 
+  </script>
+
+
+<script>
+  $(document).ready(function () {
+    const buyAllButton = document.getElementById("buyAllButtonXT");
+    const removeAllButton = document.getElementById("removeAllButtonXT");
+    buyAllButton.addEventListener("click", buyThisRowOfProdcuts);
+    removeAllButton.addEventListener("click", RemoveThisRowOfProdcuts);
+    // This is used if multiple adds are neccesairy
+    // const GourmetXT = document.getElementById("plp_product_11285-P");
+    // const GourmetXTfooter = GourmetXT.getElementsByClassName("plp-item-footer")[0];
+    // GourmetXTfooter.setAttribute("id", "gourmetXT");
+
+    function buyThisRowOfProdcuts() {
+      const allBuyButtonsContainer = document.getElementsByClassName("plp-item-footer");
+      let allBuyButtonsInsideContainer = "test";
+      for (var i = 0; i < allBuyButtonsContainer.length; i++) {
+        allBuyButtonsInsideContainer = document.getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--add");
+        if (allBuyButtonsInsideContainer[0].classList.contains("--weight")) {
+          $(allBuyButtonsInsideContainer)[1].click();
+        } 
+        // else if (document.getElementsByClassName("plp-item-footer")[i].id === "gourmetXT") {
+        //   $(allBuyButtonsInsideContainer)[0].click();
+        //   $(allBuyButtonsInsideContainer)[0].click();
+        //   $(allBuyButtonsInsideContainer)[0].click();
+        //   $(allBuyButtonsInsideContainer)[0].click();
+        // } 
+        else {
+          $(allBuyButtonsInsideContainer)[0].click();
+        }
+      }
+    }
+
+    function RemoveThisRowOfProdcuts() {
+      const allRemoveButtons = document.getElementsByClassName("--remove");
+      for (var i = 0; i < allRemoveButtons.length; i++) {
+        allRemoveButtonsInsideContainer = document.getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--remove");
+        if (allRemoveButtonsInsideContainer[0].classList.contains("--weight")) {
+          $(allRemoveButtonsInsideContainer)[1].click();
+        } 
+        // else if (document.getElementsByClassName("plp-item-footer")[i].id === "gourmetXT") {
+        //   $(allRemoveButtonsInsideContainer)[0].click();
+        //   $(allRemoveButtonsInsideContainer)[0].click();
+        //   $(allRemoveButtonsInsideContainer)[0].click();
+        //   $(allRemoveButtonsInsideContainer)[0].click();
+        // } 
+        else {
+          $(allRemoveButtonsInsideContainer)[0].click();
+        }
+
+      }
+    }
+  });
+</script>
+<div class="buttoncontainer">
+  <!-- <a class="btn buttonsXT" id="buyAllButtonXT">Voeg alle producten toe</a>
+  <a class="" id="removeAllButtonXT">Verwijderen</a> -->
+  <a class="btn buttonsXT" id="buyAllButtonXT">Toevoegen</a>
+    <a class="" id="removeAllButtonXT">Verwijderen</a>
+</div>
+<style>
+  .buttoncontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .buttoncontainer a {
+    cursor: pointer;
+  }
+
+  .buttoncontainer a#removeAllButtonXT {
+    margin-left: 7px;
+    color: #0587C7;
+    text-decoration: underline;
+  }
+
+
+
+
+
+
+  /* Voor het + teken */
+  #main-container .l-grid__item.\--col-xl-3{
+    margin: 15px !important
+  }
+  #vBoxCarousel{
+    align-items: center;
+  }
+  #vBoxCarousel .plp-item-footer{
+    display: none;
+  }
+</style>
