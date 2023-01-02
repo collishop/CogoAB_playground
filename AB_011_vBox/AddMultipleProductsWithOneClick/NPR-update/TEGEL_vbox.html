@@ -1,0 +1,123 @@
+<h2 id="titleVbox">tst
+  <!-- DO NOT TOUCH - This h2 seemingly has no purpouse. However this couldn't be further from the truth - DO NO TOUCH -->
+</h2>
+<script>
+  $(document).ready(function () {
+    const activityIdentiefierXT = document.getElementById("titleVbox").parentElement.parentElement.parentElement; // document.getElementById("titleVbox").parentElement.parentElement.parentElement.getElementsByClassName('l-grid__item')
+    document.getElementById("titleVbox").parentElement.parentElement.classList.add("l-grid");; //l-grid  element.classList.add("mystyle");
+    //document.getElementById("titleVbox").parentElement.classList.add("l-grid__item");; //l-grid  element.classList.add("mystyle");
+    const newVbox = document.getElementById("newVbox").parentElement.parentElement;
+
+    //l-grid__item
+    console.log(activityIdentiefierXT.getElementsByClassName('l-grid__item'));
+    console.log(activityIdentiefierXT)
+    console.log(newVbox)
+
+    for (i = 0; i < activityIdentiefierXT.getElementsByClassName('l-grid__item').length; i++) {
+      console.log(i)
+      //newVbox.insertAdjacentHTML('beforeend', activityIdentiefierXT.getElementsByClassName('l-grid__item')[i]);
+      newVbox.appendChild(activityIdentiefierXT.getElementsByClassName('l-grid__item')[i]);
+    }
+
+
+    // const activityIdentiefierXT = document.getElementById("titleVbox").parentElement.parentElement.id.split('title')[1];
+    // console.log(activityIdentiefierXT)
+    // let actCatalogEntry = '';
+    // if (activityIdentiefierXT === '_LISTER_TOP_CLP') {
+    //   actCatalogEntry = document.getElementById('catalogEntryRecommendationWidget');
+    //   console.log(actCatalogEntry)
+    // } else {
+    //   actCatalogEntry = document.getElementById('catalogEntryRecommendationWidget' + activityIdentiefierXT); 
+    //   console.log(actCatalogEntry)
+    // }
+
+    //c-product-slider__initialiser
+
+    function buyThisRowOfProdcuts() {
+      const allBuyButtonsContainer = activityIdentiefierXT.getElementsByClassName("c-product-slider__initialiser")[0].getElementsByClassName("plp-item-footer");
+      let allBuyButtonsInsideContainer = "test";
+      for (var i = 0; i < allBuyButtonsContainer.length; i++) {
+        allBuyButtonsInsideContainer = document.getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--add");
+        document.getElementsByClassName("plp-item-footer")[i].style.display = "block";
+        // Here we could create an if else to check for the current product ID. If said product ID matches then send them to another function?
+        if (allBuyButtonsInsideContainer[0].classList.contains("--weight")) {
+          $(allBuyButtonsInsideContainer)[1].click();
+
+        } else {
+          $(allBuyButtonsInsideContainer)[0].click();
+        }
+      }
+    }
+
+
+
+    function RemoveThisRowOfProdcuts() {
+      const allRemoveButtons = activityIdentiefierXT.getElementsByClassName("c-product-slider__initialiser")[0].getElementsByClassName("--remove");
+      for (var i = 0; i < allRemoveButtons.length; i++) {
+        allRemoveButtonsInsideContainer = document.getElementsByClassName("plp-item-footer")[i].getElementsByClassName("--remove");
+        if (allRemoveButtonsInsideContainer[0].classList.contains("--weight")) {
+          $(allRemoveButtonsInsideContainer)[1].click();
+        } else {
+          $(allRemoveButtonsInsideContainer)[0].click();
+        }
+      }
+    }
+
+
+  });
+</script>
+
+
+
+l-grid__item --col-xs-12 --col-sm-6 --col-lg-4 --col-xl-3 u-mb-15
+
+
+
+<h2 id="titleVbox">tst
+  <!-- DO NOT TOUCH - This h2 seemingly has no purpouse. However this couldn't be further from the truth - DO NO TOUCH -->
+</h2>
+<script>
+  $(document).ready(function () {
+    const newVbox = document.getElementById("newVbox").parentElement.parentElement.parentElement;
+    newVbox.className = "l-grid__item --col-xs-12 --col-sm-12 --col-lg-12 --col-xl-9 vboxContainer";
+    //newVbox.style.border = "5px solid red"
+    document.getElementById("newVbox").parentElement.parentElement.className = "l-grid__item --col-xs-12 --col-sm-12 --col-lg-12 --col-xl-4";
+
+
+    const activityIdentiefierXT = document.getElementById("titleVbox").parentElement.parentElement.parentElement; // document.getElementById("titleVbox").parentElement.parentElement.parentElement.getElementsByClassName('l-grid__item')
+    console.log(activityIdentiefierXT)
+    console.log(activityIdentiefierXT.getElementsByClassName('l-grid__item'))
+    document.getElementById("titleVbox").parentElement.parentElement.classList.add("l-grid");; //l-grid  element.classList.add("mystyle");
+    //document.getElementById("titleVbox").parentElement.classList.add("l-grid__item");; //l-grid  element.classList.add("mystyle");
+    for (i = 0; i <= activityIdentiefierXT.getElementsByClassName('l-grid__item').length; i++) {
+      console.log(i)
+      //newVbox.insertAdjacentHTML('beforeend', activityIdentiefierXT.getElementsByClassName('l-grid__item')[i]);
+      activityIdentiefierXT.getElementsByClassName('l-grid__item')[0].className = "l-grid__item --col-xs-12 --col-sm-6 --col-lg-4 --col-xl-4"
+
+      newVbox.appendChild(activityIdentiefierXT.getElementsByClassName('l-grid__item')[0]);
+    }
+  });
+</script>
+<style>
+  .vboxContainer {
+    border: solid 1px red;
+    background-color: white;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+
+  .vboxContainer .plp-item {
+    border: unset;
+  }
+
+  .vboxContainer .plp-item .c-badges {
+    display: none;
+  }
+
+  .vboxContainer .plp-item .plp-item-footer,
+  .vboxContainer .plp-item .c-list-icon {
+    display: none !important;
+  }
+</style>
+
+Colruyt/CULINAIR/Maaltijdbox/Maaltijdboxen

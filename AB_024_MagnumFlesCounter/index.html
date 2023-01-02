@@ -1,0 +1,105 @@
+<script>
+  const FirstProductContainer = document.getElementById('plp_product_25716-P');
+  const FPCoverlay = FirstProductContainer.getElementsByClassName('plp-item-top__overlay')[0]
+
+  if (FPCoverlay.classList.contains('--opened')) {
+    console.log('This item do be in basket')
+    //document.getElementsByTagName("p")[0].innerHTML =
+    CheckAmountInBasket(0)
+  } else {
+    console.log('item not opened');
+  }
+
+  function CheckAmountInBasket(e) {
+console.log(e)
+    console.log('CheckAmountInBasket');
+    const FirstProductItemIBasket = FPCoverlay.getElementsByClassName('plp-item-top__overlay__top-text')[0].innerHTML
+    console.log(FirstProductItemIBasket.split(" "));
+    //FirstProductItemIBasket
+
+    if (FirstProductItemIBasket.split(" ").length === 4) {
+      console.log('mans did big buy')
+      CalculateDifference(FirstProductItemIBasket.split(" ")[0], FirstProductItemIBasket.split(" ")[2], e)
+    } else if (FirstProductItemIBasket.split(" ").length === 2) {
+      console.log('mans did normal buy')
+      CalculateDifference(FirstProductItemIBasket.split(" ")[0], 1, e)
+    }
+  }
+
+  function CalculateDifference(a, b, e) {
+    console.log("a = ",a)
+    console.log("b = ",b)
+    console.log("e = ",e)
+    const TotalInBasket = (parseInt(e) + parseInt(a)) * parseInt(b);
+    console.log("TotalInBasket = ", TotalInBasket)
+    const AmountNeeded = 6
+
+    if (TotalInBasket >= AmountNeeded) {
+      console.log("higher");
+    } else {
+      console.log("lower");
+
+      const ItemDifference = AmountNeeded - TotalInBasket
+      console.log(ItemDifference)
+      document.getElementById('mainContent').getElementsByTagName("h2")[0].innerHTML = ItemDifference
+    }
+
+  }
+  document.getElementById('plp_product_25716-P').querySelectorAll(".--add").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      console.log('clicked')
+      CheckAmountInBasket(1)
+    });
+  });
+  document.getElementById('plp_product_25716-P').querySelectorAll(".--remove").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      console.log('clicked')
+      CheckAmountInBasket(-1)
+    });
+  });
+
+  //
+</script>
+
+
+//Licht in mijn leven
+//En dat zeg ik niet zo om het even
+//Beste sinds de uitvinding van de electriciteit
+//En ookal ben je niet altijd zo'n flinke meid
+//Je bent mijn herinnering dat het leven ook schoon kan zijn
+//Ik vind jou dus ook wel pittig fijn
+
+
+
+<script>
+  const InBasket = 4
+
+  const BasketCounter = document.getElementById('BasketCounter').innerHTML
+  console.log(BasketCounter);
+
+  if (InBasket >= BasketCounter) {
+    console.log("higher");
+  } else {
+    console.log("lower");
+
+    const ItemDifference = BasketCounter - InBasket
+    console.log(ItemDifference)
+    document.getElementById('BasketCounter').innerHTML = ItemDifference
+  }
+</script>
+
+<a href="https://efoodstg-be.colruyt.int/colruyt/nl/assortiment/ros%C3%A9-wijn-masso-antico-ros%C3%A9-primitivo-75cl-25716" class="plp-item-top__overlay --added-to-basket product-link product_overlay --opened" tabindex="0">
+  <div class="plp-item-top__overlay__text ">
+    <span class="plp-item-top__overlay__top-text product_overlay_text">1 stuk</span>
+    <span class="plp-item-top__overlay__bottom-text">in de winkelwagen</span>
+  </div>
+
+  <div class="product-comment --plp --show" data-product-comment-text="Opmerking toevoegen" data-product-id="3074457345616775183" data-product-title="Masso Antico rosé primitivo 75cl" data-tms-stopeventpropagation="">
+    <span class="product-comment__link modal-trigger --plp">
+      <span class="product-comment__link-icon icon-icon_edit --plp"></span>
+      <span class="product-comment__link-text --plp">Opmerking toevoegen</span>
+    </span>
+    <input type="hidden" name="comment" tabindex="0" data-ub-masked="" data-hj-masked="">
+  </div>
+
+</a>
