@@ -1,22 +1,72 @@
 <script>
-  //.mediaBanner__cta
-
-  const allBannerCTA = document.getElementsByClassName('mediaBanner');
-
-  for (i = 0; i < allBannerCTA.length; i++) {
-    // console.log(allBannerCTA[i]);
-    let innerHTMLsubtitle;
-    allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].classList = "button"
-    allBannerCTA[i].getElementsByClassName('mediaBanner__cta-chevron')[0].style.display = "none"
-    if (!allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].innerHTML.trim() == "") {
-      allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].classList = "button"
-    } else if (!allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].innerHTML.trim() == "") {
-      //
-      innerHTMLsubtitle = allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].innerHTML;
-      console.log(allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0])
-      allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].style.display = "none"
-      allBannerCTA[i].getElementsByClassName('mediaBanner__contentContainer ')[0].getElementsByTagName('article')[0].style.width = "70%"
-      allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].innerHTML = innerHTMLsubtitle
+  $(document).ready(function () {
+    //.mediaBanner__cta
+    if (document.querySelectorAll('[data-tms-intpromo-name="homepage-vit0123-welkom"]')[0]) {
+      const brokenBanner = document.querySelectorAll('[data-tms-intpromo-name="homepage-vit0123-welkom"]')[0].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0].innerHTML
+      document.querySelectorAll('[data-tms-intpromo-name="homepage-vit0123-welkom"]')[0].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0].outerHTML = '<p>' + brokenBanner + '</p>'
     }
-  }
+    const allBannerCTA = document.getElementsByClassName('mediaBanner');
+
+    let subtitleTagName
+    for (i = 0; i < allBannerCTA.length; i++) {
+      // console.log(allBannerCTA[i]);
+      let innerHTMLsubtitle;
+      //subtitleTagName =
+
+      if (allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0]) {} else if (allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0]) {
+        allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0].classList = "button"
+      }
+      allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].classList = "button"
+
+      allBannerCTA[i].getElementsByClassName('mediaBanner__cta-chevron')[0].style.display = "none"
+
+      if (!allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].innerHTML.trim() == "") {
+        allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].classList = "button"
+      } else if (!allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].innerHTML.trim() == "") {
+        //
+        innerHTMLsubtitle = allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].innerHTML;
+        console.log(allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0])
+        allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].style.display = "none"
+        allBannerCTA[i].getElementsByClassName('mediaBanner__contentContainer ')[0].getElementsByTagName('article')[0].style.width = "70%"
+        allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].innerHTML = innerHTMLsubtitle
+      }
+    }
+  })
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    //.mediaBanner__cta
+    if (document.querySelectorAll('[data-tms-intpromo-name="homepage-vit0123-welkom"]')[0]) {
+      const brokenBanner = document.querySelectorAll('[data-tms-intpromo-name="homepage-vit0123-welkom"]')[0].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0].innerHTML
+      document.querySelectorAll('[data-tms-intpromo-name="homepage-vit0123-welkom"]')[0].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0].outerHTML = '<p>' + brokenBanner + '</p>'
+    }
+    const allBannerCTA = document.getElementsByClassName('mediaBanner');
+
+    for (i = 0; i < allBannerCTA.length; i++) {
+      // console.log(allBannerCTA[i]);
+      let innerHTMLsubtitle;
+
+      if (allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0]) {
+        subtitleTagName = allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('p')[0].tagName
+      } else if (allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0]) {
+        subtitleTagName = allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName('span')[0].tagName
+      }
+
+
+      allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName(subtitleTagName)[0].classList = "button"
+      allBannerCTA[i].getElementsByClassName('mediaBanner__cta-chevron')[0].style.display = "none"
+      if (!allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName(subtitleTagName)[0].innerHTML.trim() == "") {
+        allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName(subtitleTagName)[0].classList = "button"
+      } else if (!allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].innerHTML.trim() == "") {
+        //
+        innerHTMLsubtitle = allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].innerHTML;
+        console.log(allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0])
+        allBannerCTA[i].getElementsByClassName('mediaBanner__subtitle')[0].style.display = "none"
+        allBannerCTA[i].getElementsByClassName('mediaBanner__contentContainer ')[0].getElementsByTagName('article')[0].style.width = "70%"
+        allBannerCTA[i].getElementsByClassName('mediaBanner__cta')[0].getElementsByTagName(subtitleTagName)[0].innerHTML = innerHTMLsubtitle
+      }
+    }
+  })
 </script>

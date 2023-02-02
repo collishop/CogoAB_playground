@@ -1,0 +1,189 @@
+<script>
+  function ready(callback) {
+    // in case the document is already rendered
+    if (document.readyState != 'loading') callback();
+    // modern browsers
+    else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+    // IE <= 8
+    else document.attachEvent('onreadystatechange', function () {
+      if (document.readyState == 'complete') callback();
+    });
+  }
+
+  ready(function () {
+    function startIPPON() {
+      console.log("ippon went")
+      const allProducts = document.querySelectorAll(('[data-product-name]'))
+      let allXtraDiscounts = ""
+      for (i = 0; i < allProducts.length; i++) {
+        allXtraDiscounts = allProducts[i].querySelectorAll(('[data-promotype]'))
+        allRedPriceDiscounts = allProducts[i].querySelectorAll(('[data-initialquantity2]'))
+        if (allXtraDiscounts.length > 0) {
+          console.log(allProducts[i])
+          //data-promotype="71"
+          console.log(allXtraDiscounts[0].hasAttribute('[data-promotype="71"]'))
+          console.log(allXtraDiscounts[0])
+          if (allXtraDiscounts[0].getAttribute('data-promotype') === '71') {
+            console.log('yes')
+          } else {
+            handleXtraDiscount(allXtraDiscounts, allXtraDiscounts.length, allProducts[i])
+            console.log("no")
+          }
+        }
+        if (allRedPriceDiscounts.length > 0) {
+          //console.log(allProducts[i])
+          // handleRedPriceDiscount(allRedPriceDiscounts, allRedPriceDiscounts.length, allProducts[i])
+        }
+      }
+    }
+
+    function handleXtraDiscount(e, length, currentProduct) {
+      for (x = 0; x < length; x++) {
+        // e[x].style.border = '1px solid #cb0000'; //1px solid #dddfe1
+        const originalUnitPrice = currentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-baseprice').replace(",", ".");
+        const originalPriceVol = currentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-basepricevol').replace(",", ".");
+        const dataPercentageXT = currentProduct.getAttribute('data-product-promo-result-quantity');
+        const quantityForReduction = currentProduct.getAttribute('data-product-promo-quantity');;
+        const newUnitPrice = originalUnitPrice - (originalUnitPrice * (dataPercentageXT.split("|")[x] / 100))
+        const newUnitPriceWithComma = newUnitPrice.toFixed(2).toString().replace(".", ",")
+        //currentProduct.getElementsByClassName('promotions__page-link')[x].innerHTML = "<strong> -" + dataPercentageXT.split("|")[x] + "</strong>" + "% (€" + newUnitPriceWithComma + "/st) vanaf " + quantityForReduction.split("|")[x] + "/st"
+        currentProduct.getElementsByClassName('promotions__page-link')[x].innerHTML = "€" + newUnitPriceWithComma + "/st vanaf " + quantityForReduction.split("|")[x] + " st"
+      }
+    }
+
+    // function handleRedPriceDiscount(y, ylength, ycurrentProduct) {
+    //   for (x = 0; x < ylength; x++) {
+    //     // y[x].style.border = '1px solid #cb0000'; //1px solid #dddfe1
+    //     const originalUnitPrice = ycurrentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-baseprice').replace(",", ".");
+    //     const originalPriceVol = ycurrentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-basepricevol').replace(",", ".");
+    //     // console.log(originalUnitPrice, originalPriceVol)
+    //     const newUnitPrice = ycurrentProduct.getElementsByClassName('price-two-link')[0].getAttribute('data-price2').replace(",", ".");
+    //     const newPriceVol = ycurrentProduct.getElementsByClassName('price-two-link')[0].getAttribute('data-price2volume').replace(",", ".");
+    //     const quantityForReduction = ycurrentProduct.getElementsByClassName('price-two-link')[0].getAttribute('data-quantity2')
+    //     //console.log(newUnitPrice, newPriceVol)
+    //     const percentageXT = (((100 * newUnitPrice) / originalUnitPrice) - 100)
+    //     //console.log(percentageXT)
+    //     ycurrentProduct.getElementsByClassName('price-two-link__text')[0].innerHTML = "<strong>" + Math.ceil(percentageXT) + "</strong>" + "% (€" + newUnitPrice + "/st) vanaf " + quantityForReduction + " st"
+    //   }
+    // }
+    startIPPON();
+    document.getElementById("showMore").addEventListener("click", printy);
+
+    function waitforme(milisec) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve('')
+        }, milisec);
+      })
+    }
+    async function printy() {
+      for (let i = 0; i < 4; ++i) {
+        await waitforme(300);
+        console.log(i);
+        startIPPON();
+      }
+      console.log("Loop execution finished!)");
+    }
+  });
+
+
+  $(document).ready(function () {
+    console.log("ready jquery");
+  });
+</script>
+
+
+<script>
+  function ready(callback) {
+    // in case the document is already rendered
+    if (document.readyState != 'loading') callback();
+    // modern browsers
+    else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+    // IE <= 8
+    else document.attachEvent('onreadystatechange', function () {
+      if (document.readyState == 'complete') callback();
+    });
+  }
+
+  ready(function () {
+    function startIPPON() {
+      console.log("ippon went")
+      const allProducts = document.querySelectorAll(('[data-product-name]'))
+      let allXtraDiscounts = ""
+      for (i = 0; i < allProducts.length; i++) {
+        allXtraDiscounts = allProducts[i].querySelectorAll(('[data-promotype]'))
+        allRedPriceDiscounts = allProducts[i].querySelectorAll(('[data-initialquantity2]'))
+        if (allXtraDiscounts.length > 0) {
+          console.log(allProducts[i])
+          //data-promotype="71"
+          console.log(allXtraDiscounts[0].hasAttribute('[data-promotype="71"]'))
+          console.log(allXtraDiscounts[0])
+          if (allXtraDiscounts[0].getAttribute('data-promotype') === '71') {
+            console.log('yes')
+          } else {
+            handleXtraDiscount(allXtraDiscounts, allXtraDiscounts.length, allProducts[i])
+            console.log("no")
+          }
+        }
+        if (allRedPriceDiscounts.length > 0) {
+          //console.log(allProducts[i])
+          // handleRedPriceDiscount(allRedPriceDiscounts, allRedPriceDiscounts.length, allProducts[i])
+        }
+      }
+    }
+
+    function handleXtraDiscount(e, length, currentProduct) {
+      for (x = 0; x < length; x++) {
+        // e[x].style.border = '1px solid #cb0000'; //1px solid #dddfe1
+        const originalUnitPrice = currentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-baseprice').replace(",", ".");
+        const originalPriceVol = currentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-basepricevol').replace(",", ".");
+        const dataPercentageXT = currentProduct.getAttribute('data-product-promo-result-quantity');
+        const quantityForReduction = currentProduct.getAttribute('data-product-promo-quantity');;
+        const newUnitPrice = originalUnitPrice - (originalUnitPrice * (dataPercentageXT.split("|")[x] / 100))
+        const newUnitPriceWithComma = newUnitPrice.toFixed(2).toString().replace(".", ",")
+        //currentProduct.getElementsByClassName('promotions__page-link')[x].innerHTML = "<strong> -" + dataPercentageXT.split("|")[x] + "</strong>" + "% (€" + newUnitPriceWithComma + "/st) vanaf " + quantityForReduction.split("|")[x] + "/st"
+        currentProduct.getElementsByClassName('promotions__page-link')[x].innerHTML = "€" + newUnitPriceWithComma + "/pce à partir " + quantityForReduction.split("|")[x] + " pce"
+        //currentProduct.getElementsByClassName('promotions__page-link')[x].innerHTML = "€" + newUnitPriceWithComma + "/st vanaf " + quantityForReduction.split("|")[x] + " st"
+      }
+    }
+
+    // function handleRedPriceDiscount(y, ylength, ycurrentProduct) {
+    //   for (x = 0; x < ylength; x++) {
+    //     // y[x].style.border = '1px solid #cb0000'; //1px solid #dddfe1
+    //     const originalUnitPrice = ycurrentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-baseprice').replace(",", ".");
+    //     const originalPriceVol = ycurrentProduct.getElementsByClassName('product__price__base-price')[0].getAttribute('data-basepricevol').replace(",", ".");
+    //     // console.log(originalUnitPrice, originalPriceVol)
+    //     const newUnitPrice = ycurrentProduct.getElementsByClassName('price-two-link')[0].getAttribute('data-price2').replace(",", ".");
+    //     const newPriceVol = ycurrentProduct.getElementsByClassName('price-two-link')[0].getAttribute('data-price2volume').replace(",", ".");
+    //     const quantityForReduction = ycurrentProduct.getElementsByClassName('price-two-link')[0].getAttribute('data-quantity2')
+    //     //console.log(newUnitPrice, newPriceVol)
+    //     const percentageXT = (((100 * newUnitPrice) / originalUnitPrice) - 100)
+    //     //console.log(percentageXT)
+    //     ycurrentProduct.getElementsByClassName('price-two-link__text')[0].innerHTML = "<strong>" + Math.ceil(percentageXT) + "</strong>" + "% (€" + newUnitPrice + "/st) vanaf " + quantityForReduction + " st"
+    //   }
+    // }
+    startIPPON();
+    document.getElementById("showMore").addEventListener("click", printy);
+
+    function waitforme(milisec) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve('')
+        }, milisec);
+      })
+    }
+    async function printy() {
+      for (let i = 0; i < 4; ++i) {
+        await waitforme(300);
+        console.log(i);
+        startIPPON();
+      }
+      console.log("Loop execution finished!)");
+    }
+  });
+
+
+  $(document).ready(function () {
+    console.log("ready jquery");
+  });
+</script>

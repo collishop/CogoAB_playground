@@ -1,0 +1,51 @@
+<script>
+  $(document).ready(function () {
+    const skCarouselXT = document.querySelectorAll('#catalogEntryRecommendationWidget')
+    console.log(skCarouselXT)
+    const firstLink = '<a data-tms-intpromo-name="CarouselButton_promoties" class="o-button --secondary XTcarButton" href="/colruyt/nl/promoties">Toon alle kortingen </a>'
+    const secondLink = '<a data-tms-intpromo-name="CarouselButton_mijnlijstjes" class="o-button --secondary XTcarButton" href="/colruyt/nl/mijnlijstjes?listId=Eerder%20gekocht">Toon alle producten</a>'
+    if (skCarouselXT[0]) {
+      skCarouselXT[0].insertAdjacentHTML('afterend', firstLink)
+      //skCarouselXT[0].getElementsByClassName('slick-initialized')[0].style.margin = "0"
+    }
+    if (skCarouselXT[1]) {
+      skCarouselXT[1].insertAdjacentHTML('afterend', secondLink)
+      //skCarouselXT[1].getElementsByClassName('slick-initialized')[0].style.margin = "0"
+    }
+  });
+</script>
+
+<style>
+  .XTcarButton {
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    margin-bottom: 30px
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+    const skCarouselXT = document.querySelectorAll('#catalogEntryRecommendationWidget')
+    console.log(skCarouselXT)
+    const firstLink = '<a data-tms-intpromo-name="CarouselButton_promoties" class="o-button --secondary XTcarButton" href="/colruyt/fr/promotions">Tous les produits</a>'
+    const secondLink = '<a data-tms-intpromo-name="CarouselButton_mijnlijstjes"  class="o-button --secondary XTcarButton" href="/colruyt/fr/meslistes?listId=Achete_recemment">Toutes les réductions</a>'
+    if (skCarouselXT[0]) {
+      skCarouselXT[0].insertAdjacentHTML('afterend', firstLink)
+      //skCarouselXT[0].getElementsByClassName('slick-initialized')[0].style.margin = "0"
+    }
+    if (skCarouselXT[1]) {
+      skCarouselXT[1].insertAdjacentHTML('afterend', secondLink)
+      //skCarouselXT[1].getElementsByClassName('slick-initialized')[0].style.margin = "0"
+    }
+  });
+</script>
+
+<style>
+  .XTcarButton {
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    margin-bottom: 30px
+  }
+</style>
